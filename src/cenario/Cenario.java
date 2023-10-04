@@ -2,10 +2,10 @@ package cenario;
 
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.util.gl2.GLUT;
-import renderizacao.Cena;
 
 import static com.jogamp.opengl.GL.GL_FRONT_AND_BACK;
 import static com.jogamp.opengl.GL2GL3.GL_FILL;
+import static com.jogamp.opengl.math.FloatUtil.TWO_PI;
 
 public class Cenario {
 
@@ -77,5 +77,21 @@ public class Cenario {
             glut.glutSolidSphere(50, 50, 50);
         gl.glPopMatrix();
 
+    }
+
+    public static void heart(GL2 gl) {
+        gl.glPushMatrix();
+        gl.glScalef(0.1F,0.1F,0);
+        gl.glColor3f(1, 0, 0);
+        gl.glBegin(GL2.GL_POLYGON);
+        for (double a = 0; a < TWO_PI; a += 0.01F) {
+            double radius = 10;
+            double x = 16 * Math.pow(Math.sin(a), 3) * radius;
+            double y = (13 * Math.cos(a) - 5 * Math.cos(2 * a) - 2 * Math.cos(3 * a) -
+                    Math.cos(4 * a)) * radius;
+            gl.glVertex2d(x, y);
+        }
+        gl.glEnd();
+        gl.glPopMatrix();
     }
 }

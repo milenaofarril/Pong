@@ -22,8 +22,12 @@ public class KeyBoard implements KeyListener {
             System.exit(0);
 
         if(e.getKeyCode() == 151)
-            cena.translacao += 10;
+            if (cena.translacao < 90){
+                cena.translacao += 10;
+            }
         if(e.getKeyCode() == 149)
-            cena.translacao -= 10;
+            if (cena.translacao > -90) {
+                cena.translacao -= 10;
+            }
     }
 }

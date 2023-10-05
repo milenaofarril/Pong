@@ -17,15 +17,15 @@ public class Renderer {
     public static int screenWidth = 600;
     public static int screenHeight = 600;
 
-    public static void init(){        
+    public static void init(){
         GLProfile.initSingleton();
         GLProfile profile = GLProfile.get(GLProfile.GL2);
-        GLCapabilities caps = new GLCapabilities(profile);        
+        GLCapabilities caps = new GLCapabilities(profile);
         window = GLWindow.create(caps);
         window.setSize(screenWidth, screenHeight);
-        
+
         Cena cena = new Cena();
-        
+
         window.addGLEventListener(cena);
 
         window.addKeyListener(new KeyBoard(cena));
@@ -40,11 +40,11 @@ public class Renderer {
                 System.exit(0);
             }
         });
-        
+
         window.setFullscreen(true);
         window.setVisible(true);
     }
-  
+
     public static void main(String[] args) {
         init();
     }

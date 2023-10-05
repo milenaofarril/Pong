@@ -59,29 +59,30 @@ public class Cenario {
     }
 
     public static void barra (GL2 gl, GLUT glut, float translacao){
-        gl.glTranslatef(translacao, 0, 0);
         gl.glPushMatrix();
-            gl.glColor3f(0, 0,0);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glTranslatef(0, -85, 0);
-            gl.glScalef(0.5f,0.15f,1);
-            glut.glutSolidCube(50);
+        gl.glTranslatef(translacao, 0, 0);
+        gl.glColor3f(0, 0,0);
+        gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        gl.glTranslatef(0, -92, 0);
+        gl.glScalef(0.5f,0.15f,1);
+        glut.glutSolidCube(50);
         gl.glPopMatrix();
     }
 
     public static void bolinha(GL2 gl, GLUT glut){
         gl.glPushMatrix();
-            gl.glColor3f(1, 0,0);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glScalef(0.1F,0.1F,0);
-            glut.glutSolidSphere(50, 50, 50);
+        gl.glColor3f(1, 0,0);
+        gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        gl.glScalef(0.12F,0.2f,0);
+        glut.glutSolidSphere(50, 50, 50);
         gl.glPopMatrix();
 
     }
 
     public static void heart(GL2 gl) {
         gl.glPushMatrix();
-        gl.glScalef(0.1F,0.1F,0);
+        gl.glTranslatef(-95, 92, 0);
+        gl.glScalef(0.02F,0.027F,0);
         gl.glColor3f(1, 0, 0);
         gl.glBegin(GL2.GL_POLYGON);
         for (double a = 0; a < TWO_PI; a += 0.01F) {

@@ -1,17 +1,23 @@
 package renderizacao;
 
 import cenario.Cenario;
+import cenario.Menu;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
+import com.jogamp.opengl.util.awt.TextRenderer;
 import com.jogamp.opengl.util.gl2.GLUT;
+
+import java.awt.*;
 
 public class Cena implements GLEventListener {
     private float xMin, xMax, yMin, yMax, zMin, zMax;
     GLU glu;
     public float angulo;
     public float translacao;
+    private TextRenderer text15;
+    private TextRenderer text20;
 
     @Override
     public void init(GLAutoDrawable drawable) {
@@ -24,6 +30,9 @@ public class Cena implements GLEventListener {
         gl.glEnable(GL2.GL_DEPTH_TEST);
         angulo = 0;
         translacao = 0;
+
+        text15 = new TextRenderer(new Font("Arial", Font.BOLD, 15));
+        text20 = new TextRenderer(new Font("Arial", Font.BOLD, 20));
     }
 
     @Override
@@ -45,10 +54,13 @@ public class Cena implements GLEventListener {
         //Cenario.coracao(gl);
         Cenario.bolinha(gl, glut);
         Cenario.barra(gl, glut, translacao);
+        Cenario.heart(gl);
+        //Menu.inicio(gl, glut, text15, Color.GREEN);
 
         gl.glFlush();
 
     }
+
 
     @Override
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {

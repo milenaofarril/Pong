@@ -8,10 +8,7 @@ import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
 import movimentacao.KeyBoard;
 
-/**
- *
- * @author Kakugawa
- */
+
 public class Renderer {
     private static GLWindow window = null;
     public static int screenWidth = 600;

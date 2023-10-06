@@ -10,6 +10,7 @@ import static com.jogamp.opengl.math.FloatUtil.TWO_PI;
 public class Cenario {
 
 
+
     //public static void coracao(GL2 gl) {
     //    double limite = Math.PI;
     //    double i, cX, cY, rX, rY;
@@ -79,6 +80,8 @@ public class Cenario {
 
     }
 
+
+
     public static void vida(GL2 gl) {
         gl.glPushMatrix();
         gl.glTranslatef(-95, 92, 0);
@@ -90,10 +93,21 @@ public class Cenario {
             double x = 16 * Math.pow(Math.sin(a), 3) * radius;
             double y = (13 * Math.cos(a) - 5 * Math.cos(2 * a) - 2 * Math.cos(3 * a) -
                     Math.cos(4 * a)) * radius;
+
+
             gl.glVertex2d(x, y);
         }
         gl.glEnd();
         gl.glPopMatrix();
+    }
+
+    public static void listaDeCoracoes(GL2 gl) {
+        for (int i = 0; i < 3; i++) {
+            gl.glPushMatrix();
+            gl.glTranslatef(i * 7, 0, 0);
+            vida(gl);
+            gl.glPopMatrix();
+        }
     }
 
     public static void obstaculoAzul (GL2 gl, GLUT glut){

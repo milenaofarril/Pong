@@ -19,6 +19,8 @@ public class Cena implements GLEventListener {
     private TextRenderer text15;
     private TextRenderer text20;
 
+
+
     @Override
     public void init(GLAutoDrawable drawable) {
         glu = new GLU();
@@ -54,7 +56,7 @@ public class Cena implements GLEventListener {
         //Cenario.coracao(gl);
         Cenario.bolinha(gl, glut);
         Cenario.barra(gl, glut, translacao);
-        Cenario.vida(gl);
+        Cenario.listaDeCoracoes(gl);
         //Menu.inicio(gl, glut, text15, Color.GREEN);
         Cenario.obstaculoAzul(gl, glut);
         Cenario.obstaculoRoxo(gl, glut);

@@ -8,6 +8,7 @@ import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.awt.TextRenderer;
 import com.jogamp.opengl.util.gl2.GLUT;
+import fase.Fases;
 
 import java.awt.*;
 
@@ -53,7 +54,6 @@ public class Cena implements GLEventListener {
         gl.glColor3f(1, 0, 0);
 
 
-        //Cenario.coracao(gl);
         Cenario.bolinha(gl, glut);
         Cenario.barra(gl, glut, translacao);
         Cenario.listaDeCoracoes(gl);
@@ -81,7 +81,6 @@ public class Cena implements GLEventListener {
 
         gl.glMatrixMode(GL2.GL_MODELVIEW);
         gl.glLoadIdentity();
-        System.out.println("Reshape: " + width + ", " + height);
     }
 
     @Override

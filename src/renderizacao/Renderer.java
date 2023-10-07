@@ -8,17 +8,20 @@ import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.util.FPSAnimator;
 import movimentacao.KeyBoard;
 
+import java.awt.*;
+
 
 public class Renderer {
-    private static GLWindow window = null;
-    public static int screenWidth = 600;
-    public static int screenHeight = 600;
+
+    private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    public static final int screenWidth = (int) screenSize.getWidth();
+    public static final int screenHeight = (int) screenSize.getHeight();
 
     public static void init(){
         GLProfile.initSingleton();
         GLProfile profile = GLProfile.get(GLProfile.GL2);
         GLCapabilities caps = new GLCapabilities(profile);
-        window = GLWindow.create(caps);
+        GLWindow window = GLWindow.create(caps);
         window.setSize(screenWidth, screenHeight);
 
         Cena cena = new Cena();

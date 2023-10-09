@@ -57,81 +57,40 @@ public class Cenario {
         }
     }
 
-    public static void obstaculoAzul(GL2 gl, GLUT glut) {
+    public static void obstaculo(GL2 gl, GLUT glut) {
         gl.glPushMatrix();
-            gl.glColor3f(0, 0,1);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glTranslatef(-66.6f, 80, 0);
-            gl.glScalef(1.328f,0.15f,1);
-            glut.glutSolidCube(50);
+        gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        gl.glTranslatef(-66.6f, 80, 0);
+        gl.glScalef(1.328f, 0.15f, 1);
+        glut.glutSolidCube(50);
         gl.glPopMatrix();
 
-        gl.glPushMatrix();
-            gl.glColor3f(0, 0,1);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glTranslatef(0, 80, 0);
-            gl.glScalef(1.328f,0.15f,1);
-            glut.glutSolidCube(50);
-        gl.glPopMatrix();
-
-        gl.glPushMatrix();
-            gl.glColor3f(0, 0,1);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glTranslatef(66.6f, 80, 0);
-            gl.glScalef(1.328f,0.15f,1);
-            glut.glutSolidCube(50);
-        gl.glPopMatrix();
     }
 
-    public static void obstaculoRoxo (GL2 gl, GLUT glut){
-        gl.glPushMatrix();
-        gl.glColor3f(0.6f, 0,1);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glTranslatef(-66.6f, 72.4f, 0);
-            gl.glScalef(1.328f,0.15f,1);
-            glut.glutSolidCube(50);
-        gl.glPopMatrix();
+    public static void listaDeObstaculo(GL2 gl, GLUT glut) {
+        for (int i = 0; i < 3; i++) {
 
-        gl.glPushMatrix();
-        gl.glColor3f(0.6f, 0,1);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glTranslatef(0, 72.4f, 0);
-            gl.glScalef(1.328f,0.15f,1);
-            glut.glutSolidCube(50);
-        gl.glPopMatrix();
+            //Obstaculo Azul
+            gl.glPushMatrix();
+            gl.glColor3f(0, 0, 0.5f);
+            gl.glTranslatef(i * 66.6f, 0, 0);
+            obstaculo(gl, glut);
+            gl.glPopMatrix();
 
-        gl.glPushMatrix();
-        gl.glColor3f(0.6f, 0,1);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glTranslatef(66.6f, 72.4f, 0);
-            gl.glScalef(1.328f,0.15f,1);
-            glut.glutSolidCube(50);
-        gl.glPopMatrix();
-    }
+            //Obstaculo Roxo
+            gl.glPushMatrix();
+            gl.glColor3f(0.5f, 0, 0.5f);
+            gl.glTranslatef(i * 66.6f, -8f, 0);
+            obstaculo(gl, glut);
+            gl.glPopMatrix();
 
-    public static void obstaculoAzulClaro(GL2 gl, GLUT glut) {
-        gl.glPushMatrix();
-        gl.glColor3f(0, 0.6f,1);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glTranslatef(-66.6f, 64.8f, 0);
-            gl.glScalef(1.328f,0.15f,1);
-            glut.glutSolidCube(50);
-        gl.glPopMatrix();
-
-        gl.glPushMatrix();
-        gl.glColor3f(0, 0.6f,1);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glTranslatef(0, 64.8f, 0);
-            gl.glScalef(1.328f,0.15f,1);
-            glut.glutSolidCube(50);
-        gl.glPopMatrix();
-
-        gl.glPushMatrix();
-        gl.glColor3f(0, 0.6f,1);
-            gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-            gl.glTranslatef(66.6f, 64.8f, 0);
-            gl.glScalef(1.328f,0.15f,1);
-            glut.glutSolidCube(50);
-        gl.glPopMatrix();
+            //Obstaculo Amarelo
+            gl.glPushMatrix();
+            gl.glColor3f(1f, 1f, 0);
+            gl.glTranslatef(i * 66.6f, -16.2f, 0);
+            obstaculo(gl, glut);
+            gl.glPopMatrix();
+        }
     }
 }
+

@@ -58,9 +58,8 @@ public class Cena implements GLEventListener {
         Cenario.barra(gl, glut, translacao);
         Cenario.listaDeCoracoes(gl);
         //Menu.inicio(gl, glut, text15, Color.GREEN);
-        Cenario.obstaculoAzul(gl, glut);
-        Cenario.obstaculoRoxo(gl, glut);
-        Cenario.obstaculoAzulClaro(gl, glut);
+        Cenario.listaDeObstaculo(gl,glut);
+
 
         gl.glFlush();
 

@@ -17,8 +17,8 @@ public class Cena implements GLEventListener {
     GLU glu;
     public float angulo;
     public float translacao;
-    private TextRenderer text15;
-    private TextRenderer text20;
+    private TextRenderer text100;
+    private TextRenderer text40;
 
 
 
@@ -34,8 +34,8 @@ public class Cena implements GLEventListener {
         angulo = 0;
         translacao = 0;
 
-        text15 = new TextRenderer(new Font("Arial", Font.BOLD, 15));
-        text20 = new TextRenderer(new Font("Arial", Font.BOLD, 20));
+        text100 = new TextRenderer(new Font("Arial", Font.BOLD, 100));
+        text40 = new TextRenderer(new Font("Arial", Font.BOLD, 40));
     }
 
     @Override
@@ -45,21 +45,12 @@ public class Cena implements GLEventListener {
         GLUT glut = new GLUT();
 
 
-        gl.glClearColor(1, 1, 1, 1);
+        gl.glClearColor(0, 0, 0, 0);
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
 
-
-        gl.glColor3f(1, 0, 0);
-
-
-        Cenario.bolinha(gl, glut);
-        Cenario.barra(gl, glut, translacao);
-        Cenario.listaDeCoracoes(gl);
-        //Menu.inicio(gl, glut, text15, Color.GREEN);
-        Cenario.listaDeObstaculo(gl,glut);
-
+        Fases.fase(gl,glut,translacao,text100,text40);
 
         gl.glFlush();
 

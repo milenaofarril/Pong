@@ -13,7 +13,7 @@ public class Cenario {
     public static void barra(GL2 gl, GLUT glut, float translacao) {
         gl.glPushMatrix();
         gl.glTranslatef(translacao, 0, 0);
-        gl.glColor3f(0, 0, 0);
+        gl.glColor3f(1, 1, 1);
         gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         gl.glTranslatef(0, -92, 0);
         gl.glScalef(0.5f, 0.15f, 1);

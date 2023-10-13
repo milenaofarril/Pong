@@ -14,8 +14,8 @@ import java.awt.*;
 public class Renderer {
 
     private static final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-    public static final int screenWidth = (int) screenSize.getWidth();
-    public static final int screenHeight = (int) screenSize.getHeight();
+    public static final int screenWidth = 1920;
+    public static final int screenHeight = 1080;
 
     public static void init(){
         GLProfile.initSingleton();

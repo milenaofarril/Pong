@@ -1,14 +1,18 @@
 package cenario;
 
 import com.jogamp.opengl.GL2;
+import com.jogamp.opengl.util.awt.TextRenderer;
 import com.jogamp.opengl.util.gl2.GLUT;
+import renderizacao.Cena;
 
+import java.awt.*;
+
+import static cenario.Menu.texto;
 import static com.jogamp.opengl.GL.GL_FRONT_AND_BACK;
 import static com.jogamp.opengl.GL2GL3.GL_FILL;
 import static com.jogamp.opengl.math.FloatUtil.TWO_PI;
 
 public class Cenario {
-
 
     public static void barra(GL2 gl, GLUT glut, float translacao) {
         gl.glPushMatrix();
@@ -49,7 +53,7 @@ public class Cenario {
     }
 
     public static void listaDeCoracoes(GL2 gl) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             gl.glPushMatrix();
             gl.glTranslatef(i * 7, 0, 0);
             vida(gl);
@@ -91,6 +95,10 @@ public class Cenario {
             obstaculo(gl, glut);
             gl.glPopMatrix();
         }
+    }
+
+    public static void pontuacao(GL2 gl, GLUT glut, TextRenderer textRenderer, Color cor){
+        texto(gl,1600, 1020, cor, "PONTUAÇÃO: ", textRenderer);
     }
 }
 

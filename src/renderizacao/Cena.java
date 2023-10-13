@@ -1,7 +1,6 @@
 package renderizacao;
 
 import cenario.Cenario;
-import cenario.Menu;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
@@ -9,16 +8,21 @@ import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.awt.TextRenderer;
 import com.jogamp.opengl.util.gl2.GLUT;
 import fase.Fases;
+import cenario.Menu;
 
 import java.awt.*;
 
 public class Cena implements GLEventListener {
+    private static GL2 gl;
+    private static GLUT glut;
     private float xMin, xMax, yMin, yMax, zMin, zMax;
     GLU glu;
     public float angulo;
     public float translacao;
-    private TextRenderer text100;
+    private TextRenderer text30;
     private TextRenderer text40;
+    private TextRenderer text100;
+    private TextRenderer text200;
 
 
 
@@ -34,8 +38,10 @@ public class Cena implements GLEventListener {
         angulo = 0;
         translacao = 0;
 
-        text100 = new TextRenderer(new Font("Arial", Font.BOLD, 100));
+        text30 = new TextRenderer(new Font("Arial", Font.BOLD, 30));
         text40 = new TextRenderer(new Font("Arial", Font.BOLD, 40));
+        text100 = new TextRenderer(new Font("Arial", Font.BOLD, 100));
+        text200 = new TextRenderer(new Font("Arial", Font.BOLD, 200));
     }
 
     @Override
@@ -50,12 +56,11 @@ public class Cena implements GLEventListener {
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
 
-        Fases.fase(gl,glut,translacao,text100,text40);
+        Fases.fase(gl,glut,translacao,text100,text40,text30);
 
         gl.glFlush();
 
     }
-
 
     @Override
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {

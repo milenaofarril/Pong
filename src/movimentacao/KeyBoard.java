@@ -8,9 +8,7 @@ public class KeyBoard implements KeyListener {
 
     private Cena cena;
 
-    public KeyBoard(Cena cena){
-        this.cena = cena;
-    }
+    public KeyBoard(Cena cena){this.cena = cena;}
 
     @Override
     public void keyReleased(KeyEvent e) { }

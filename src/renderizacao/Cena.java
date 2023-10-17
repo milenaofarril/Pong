@@ -19,6 +19,8 @@ public class Cena implements GLEventListener {
     GLU glu;
     public float angulo;
     public float translacao;
+    public float eixoX;
+    public float eixoY;
     private TextRenderer text30;
     private TextRenderer text40;
     private TextRenderer text100;
@@ -38,6 +40,8 @@ public class Cena implements GLEventListener {
         gl.glEnable(GL2.GL_DEPTH_TEST);
         angulo = 0;
         translacao = 0;
+        eixoY = 0;
+        eixoX = 0;
 
         text30 = new TextRenderer(new Font("Arial", Font.BOLD, 30));
         text40 = new TextRenderer(new Font("Arial", Font.BOLD, 40));
@@ -56,7 +60,7 @@ public class Cena implements GLEventListener {
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
 
-        fases.fase(gl,glut,translacao,text100,text40,text30);
+        fases.fase(gl,glut,translacao,text100,text40,text30, eixoX, eixoY);
 
         gl.glFlush();
 

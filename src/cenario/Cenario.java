@@ -7,15 +7,17 @@ import renderizacao.Cena;
 
 import java.awt.*;
 
-import static cenario.Menu.texto;
 import static com.jogamp.opengl.GL.GL_FRONT_AND_BACK;
 import static com.jogamp.opengl.GL2GL3.GL_FILL;
 import static com.jogamp.opengl.math.FloatUtil.TWO_PI;
 
 public class Cenario {
-   private final Cena cena = new Cena();
+    private Cena cena;
+    private final Menu menu = new Menu();
+    public static float translacaoBolinhaX = 0;
+    public static float translacaoBolinhaY = 0;
 
-    public static void barra(GL2 gl, GLUT glut, float translacao) {
+    public void barra(GL2 gl, GLUT glut, float translacao) {
         gl.glPushMatrix();
         gl.glTranslatef(translacao, 0, 0);
         gl.glColor3f(1, 1, 1);
@@ -26,7 +28,7 @@ public class Cenario {
         gl.glPopMatrix();
     }
 
-    public static void bolinha(GL2 gl, GLUT glut) {
+    public void bolinha(GL2 gl, GLUT glut) {
         gl.glPushMatrix();
         gl.glColor3f(1, 0, 0);
         gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -36,14 +38,18 @@ public class Cenario {
 
     }
 
-    public void moveBolinha(GL2 gl, GLUT glut, float eixoX, float eixoY, float translacaoBolinha) {
-        gl.glTranslatef(translacaoBolinha, translacaoBolinha, 0);
-        Cenario.bolinha(gl, glut);
-        if (eixoX < 90 && eixoY < 90)
-            cena.translacaoBolinha++;
+    public void moveBolinha(GL2 gl, GLUT glut, float eixoX, float eixoY) {
+        gl.glPushMatrix();
+        gl.glTranslatef(translacaoBolinhaX, translacaoBolinhaY, 0);
+        bolinha(gl, glut);
+        gl.glPopMatrix();
+        if (eixoX < 90 && eixoY < 90) {
+            translacaoBolinhaX++;
+            translacaoBolinhaY++;
+        }
     }
 
-    public static void vida(GL2 gl) {
+    public void vida(GL2 gl) {
         gl.glPushMatrix();
         gl.glTranslatef(-95, 92, 0);
         gl.glScalef(0.02F, 0.027F, 0);
@@ -60,7 +66,7 @@ public class Cenario {
         gl.glPopMatrix();
     }
 
-    public static void listaDeCoracoes(GL2 gl) {
+    public void listaDeCoracoes(GL2 gl) {
         for (int i = 0; i < 5; i++) {
             gl.glPushMatrix();
             gl.glTranslatef(i * 7, 0, 0);
@@ -69,7 +75,7 @@ public class Cenario {
         }
     }
 
-    public static void obstaculo(GL2 gl, GLUT glut) {
+    public void obstaculo(GL2 gl, GLUT glut) {
         gl.glPushMatrix();
         gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         gl.glTranslatef(-66.6f, 80, 0);
@@ -79,7 +85,7 @@ public class Cenario {
 
     }
 
-    public static void listaDeObstaculo(GL2 gl, GLUT glut) {
+    public void listaDeObstaculo(GL2 gl, GLUT glut) {
         for (int i = 0; i < 3; i++) {
 
             //Obstaculo Azul
@@ -105,8 +111,8 @@ public class Cenario {
         }
     }
 
-    public static void pontuacao(GL2 gl, GLUT glut, TextRenderer textRenderer, Color cor){
-        texto(gl,1600, 1020, cor, "PONTUAÇÃO: ", textRenderer);
+    public void pontuacao(GL2 gl, GLUT glut, TextRenderer textRenderer, Color cor) {
+        menu.texto(gl, 1600, 1020, cor, "PONTUAÇÃO: ", textRenderer);
     }
 }
 

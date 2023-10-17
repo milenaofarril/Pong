@@ -12,24 +12,25 @@ import java.awt.*;
 public class Fases {
 
     private final Cenario cenario = new Cenario();
+    private final Menu menu = new Menu();
     public static int nivel = 0;
     public static boolean pause = false;
+
     private void initGame(GL2 gl, GLUT glut, TextRenderer text100, TextRenderer text40) {
-        Menu.titulo(gl, glut, text100, Color.GREEN);
-        Menu.controles(gl, glut, text40, Color.YELLOW);
+        menu.titulo(gl, glut, text100, Color.GREEN);
+        menu.controles(gl, glut, text40, Color.YELLOW);
 
     }
 
     private void primeiraFase(GL2 gl, GLUT glut, float translacao, TextRenderer text30,
-                              float eixoX, float eixoY, float translacaoBolinha) {
-        buildCenario( gl, glut,translacao, text30, eixoX, eixoY, translacaoBolinha);
-
+                              float eixoX, float eixoY) {
+            buildCenario( gl, glut,translacao, text30, eixoX, eixoY);
     }
 
     private void segundaFase(GL2 gl, GLUT glut, float translacao, TextRenderer text30,
-                             float eixoX, float eixoY, float translacaoBolinha) {
-        buildCenario(gl, glut,translacao, text30, eixoX, eixoY, translacaoBolinha);
-        Cenario.listaDeObstaculo(gl,glut);
+                             float eixoX, float eixoY) {
+        buildCenario(gl, glut,translacao, text30, eixoX, eixoY);
+        cenario.listaDeObstaculo(gl,glut);
 
     }
 
@@ -38,16 +39,16 @@ public class Fases {
     }
 
     public void fase(GL2 gl, GLUT glut, float translacao, TextRenderer text100, TextRenderer text40,
-                     TextRenderer text30, float eixoX, float eixoY, float translacaoBolinha) {
+                     TextRenderer text30, float eixoX, float eixoY) {
         switch (nivel) {
             case 0:
                 initGame(gl,glut,text100,text40);
                 break;
             case 1:
-                primeiraFase(gl, glut, translacao, text30, eixoX, eixoY, translacaoBolinha);
+                primeiraFase(gl, glut, translacao, text30, eixoX, eixoY);
                 break;
             case 2:
-                segundaFase(gl, glut, translacao, text30, eixoX, eixoY, translacaoBolinha);
+                segundaFase(gl, glut, translacao, text30, eixoX, eixoY);
                 break;
             case 3:
                 gameOver(gl, glut);
@@ -56,10 +57,10 @@ public class Fases {
 
     }
     private void buildCenario(GL2 gl, GLUT glut, float translacao, TextRenderer text30,
-                              float eixoX, float eixoY, float translacaoBolinha){
-        cenario.moveBolinha(gl, glut, eixoX, eixoY, translacaoBolinha);
-        Cenario.barra(gl, glut, translacao);
-        Cenario.listaDeCoracoes(gl);
-        Cenario.pontuacao(gl, glut, text30, Color.GREEN);
+                              float eixoX, float eixoY){
+        cenario.moveBolinha(gl, glut, eixoX, eixoY);
+        cenario.barra(gl, glut, translacao);
+        cenario.listaDeCoracoes(gl);
+        cenario.pontuacao(gl, glut, text30, Color.GREEN);
     }
 }

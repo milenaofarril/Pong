@@ -11,29 +11,30 @@ import java.awt.*;
 
 public class Fases {
 
-    private static void initGame(GL2 gl, GLUT glut, TextRenderer text100, TextRenderer text40) {
+    public static int nivel = 0;
+    public static boolean pause = false;
+    private void initGame(GL2 gl, GLUT glut, TextRenderer text100, TextRenderer text40) {
         Menu.titulo(gl, glut, text100, Color.GREEN);
         Menu.controles(gl, glut, text40, Color.YELLOW);
 
     }
 
-    private static void primeiraFase(GL2 gl, GLUT glut, float translacao, TextRenderer text30) {
+    private void primeiraFase(GL2 gl, GLUT glut, float translacao, TextRenderer text30) {
         buildCenario( gl, glut,translacao, text30);
 
     }
 
-    private static void segundaFase(GL2 gl, GLUT glut, float translacao, TextRenderer text30) {
+    private void segundaFase(GL2 gl, GLUT glut, float translacao, TextRenderer text30) {
         buildCenario(gl, glut,translacao, text30);
         Cenario.listaDeObstaculo(gl,glut);
 
     }
 
-    private static void gameOver(GL2 gl, GLUT glut) {
+    private void gameOver(GL2 gl, GLUT glut) {
 
     }
 
-    public static void fase(GL2 gl, GLUT glut, float translacao, TextRenderer text100, TextRenderer text40, TextRenderer text30) {
-        int nivel = 0;
+    public void fase(GL2 gl, GLUT glut, float translacao, TextRenderer text100, TextRenderer text40, TextRenderer text30) {
         switch (nivel) {
             case 0:
                 initGame(gl,glut,text100,text40);
@@ -50,11 +51,10 @@ public class Fases {
         }
 
     }
-    public static void buildCenario(GL2 gl, GLUT glut, float translacao, TextRenderer text30){
+    private void buildCenario(GL2 gl, GLUT glut, float translacao, TextRenderer text30){
         Cenario.bolinha(gl, glut);
         Cenario.barra(gl, glut, translacao);
         Cenario.listaDeCoracoes(gl);
         Cenario.pontuacao(gl, glut, text30, Color.GREEN);
-
     }
 }

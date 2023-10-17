@@ -23,6 +23,7 @@ public class Cena implements GLEventListener {
     private TextRenderer text40;
     private TextRenderer text100;
     private TextRenderer text200;
+    private final Fases fases = new Fases();
 
 
 
@@ -46,7 +47,6 @@ public class Cena implements GLEventListener {
 
     @Override
     public void display(GLAutoDrawable drawable) {
-
         GL2 gl = drawable.getGL().getGL2();
         GLUT glut = new GLUT();
 
@@ -56,7 +56,7 @@ public class Cena implements GLEventListener {
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
 
-        Fases.fase(gl,glut,translacao,text100,text40,text30);
+        fases.fase(gl,glut,translacao,text100,text40,text30);
 
         gl.glFlush();
 

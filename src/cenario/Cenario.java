@@ -13,6 +13,7 @@ import static com.jogamp.opengl.GL2GL3.GL_FILL;
 import static com.jogamp.opengl.math.FloatUtil.TWO_PI;
 
 public class Cenario {
+   private final Cena cena = new Cena();
 
     public static void barra(GL2 gl, GLUT glut, float translacao) {
         gl.glPushMatrix();
@@ -33,6 +34,13 @@ public class Cenario {
         glut.glutSolidSphere(50, 50, 50);
         gl.glPopMatrix();
 
+    }
+
+    public void moveBolinha(GL2 gl, GLUT glut, float eixoX, float eixoY, float translacaoBolinha) {
+        gl.glTranslatef(translacaoBolinha, translacaoBolinha, 0);
+        Cenario.bolinha(gl, glut);
+        if (eixoX < 90 && eixoY < 90)
+            cena.translacaoBolinha++;
     }
 
     public static void vida(GL2 gl) {

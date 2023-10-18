@@ -41,7 +41,7 @@ public class Renderer {
             }
         });
 
-        window.setFullscreen(true);
+        //window.setFullscreen(true);
         window.setVisible(true);
     }
 

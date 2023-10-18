@@ -58,7 +58,8 @@ public class Fases {
     }
     private void buildCenario(GL2 gl, GLUT glut, float translacao, TextRenderer text30,
                               float eixoX, float eixoY){
-        cenario.moveBolinha(gl, glut, eixoX, eixoY);
+       cenario.moveBolinha(gl, glut, eixoX, eixoY);
+        //cenario.bolinha(gl, glut);
         cenario.barra(gl, glut, translacao);
         cenario.listaDeCoracoes(gl);
         cenario.pontuacao(gl, glut, text30, Color.GREEN);

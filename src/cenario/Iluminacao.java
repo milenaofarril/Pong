@@ -29,4 +29,13 @@ public class Iluminacao {
 
 
     }
+
+    public void iluminacaoDifusa(GL2 gl) {
+        float luzDifusa[] = {1f, 1.0f, 1,0f, 1.0f}; //cor
+        float posicaoLuz[] = {-0.0f, 0.0f, 100.0f, 0.0f}; //1.0 pontual
+
+        gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_DIFFUSE, luzDifusa, 0);
+        gl.glLightfv(GL2.GL_LIGHT0, GL2.GL_POSITION, posicaoLuz, 0);
+    }
+
 }

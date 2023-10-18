@@ -29,7 +29,7 @@ public class Cena implements GLEventListener {
     private final Fases fases = new Fases();
     private final Iluminacao iluminacao = new Iluminacao();
 
-
+   // dwdwedw3d 323d23d23ded
     @Override
     public void init(GLAutoDrawable drawable) {
         glu = new GLU();

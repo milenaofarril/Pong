@@ -14,8 +14,6 @@ import static com.jogamp.opengl.math.FloatUtil.TWO_PI;
 public class Cenario {
     private Cena cena;
     private final Menu menu = new Menu();
-    public static float translacaoBolinhaX = 0;
-    public static float translacaoBolinhaY = 0;
 
     public void barra(GL2 gl, GLUT glut, float translacao) {
         gl.glPushMatrix();
@@ -32,21 +30,8 @@ public class Cenario {
         gl.glPushMatrix();
         gl.glColor3f(1, 0, 0);
         gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        gl.glScalef(0.1f, 0.17f, 0);
-        glut.glutSolidSphere(50, 50, 50);
+        glut.glutSolidSphere(5, 50, 50);
         gl.glPopMatrix();
-
-    }
-
-    public void moveBolinha(GL2 gl, GLUT glut, float eixoX, float eixoY) {
-        gl.glPushMatrix();
-        gl.glTranslatef(translacaoBolinhaX, translacaoBolinhaY, 0);
-        bolinha(gl, glut);
-        gl.glPopMatrix();
-        if (eixoX < 90 && eixoY < 90) {
-            translacaoBolinhaX++;
-            translacaoBolinhaY++;
-        }
     }
 
     public void vida(GL2 gl) {

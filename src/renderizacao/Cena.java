@@ -39,7 +39,7 @@ public class Cena implements GLEventListener {
 
         gl.glEnable(GL2.GL_DEPTH_TEST);
         angulo = 0;
-        translacao = 0;
+        translacao = 0.0f;
         eixoY = 0;
         eixoX = 0;
 
@@ -60,7 +60,7 @@ public class Cena implements GLEventListener {
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
 
-        fases.fase(gl,glut,translacao,text100,text40,text30, eixoX, eixoY);
+        fases.fase(gl,glut,translacao,text100,text40,text30);
 
         gl.glFlush();
 

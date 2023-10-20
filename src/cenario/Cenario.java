@@ -22,7 +22,7 @@ public class Cenario {
         gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         gl.glTranslatef(0, -92, 0);
         gl.glScalef(0.5f, 0.15f, 1);
-        glut.glutSolidCube(10);
+        glut.glutSolidCube(50);
         gl.glPopMatrix();
     }
 

@@ -6,16 +6,14 @@ import com.jogamp.opengl.util.gl2.GLUT;
 
 public class MovBall {
 
-    public static float paddleX = 0.0f;
-
     private static float ballX = 0.0f;
 
-    private static float ballY = 0.0f;
+    private static float ballY = 80f;
 
-    private static float ballSpeedX = 0.8f;
+    private static float ballSpeedX = 1f;
 
-    private static float ballSpeedY = 0.8f;
-
+    private static float ballSpeedY = 1f;
+    private int score = 0;
     private Cenario cenario = new Cenario();
 
 
@@ -28,19 +26,37 @@ public class MovBall {
         ballX += ballSpeedX;
         ballY += ballSpeedY;
 
-
         if (ballX < -90f || ballX > 90f) {
             ballSpeedX = -ballSpeedX;
         }
 
-        if (ballY > 90f) {
+        if (ballY > 80f) {
             ballSpeedY = -ballSpeedY;
         }
 
+        if (ballY < -100f) {
+            ballX = 0f;
+            ballY = 80f;
+        }
+        checkCollision(translacao);
+    }
 
-        if(ballY > -80f && (ballX >= translacao - 10f && ballX <= translacao + 10f)) {
+    private void checkCollision(float translacao) {
+        if (ballY <= -85 && ballX >= translacao - 15 && ballX <= translacao + 15) {
             ballSpeedY = -ballSpeedY;
+            increasesScore();
         }
 
+        if (ballX <= -200) {
+            ballSpeedX = -Math.abs(ballSpeedX);
+        }
+
+        if (ballX >= 200) {
+            ballSpeedX = -Math.abs(ballSpeedX);
+        }
+    }
+
+    private void increasesScore() {
+        score += 50;
     }
 }

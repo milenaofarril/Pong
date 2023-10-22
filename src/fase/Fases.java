@@ -19,10 +19,10 @@ public class Fases {
     public static int nivel = 0;
     public static boolean pause = false;
 
-    private void initGame(GL2 gl, GLUT glut, TextRenderer text100, TextRenderer text40) {
-        menu.titulo(gl, glut, text100, Color.GREEN);
-        menu.controles(gl, glut, text40, Color.YELLOW);
-
+    private void initGame(GL2 gl, TextRenderer text100, TextRenderer text40) {
+        menu.titulo(gl, text100, Color.GREEN);
+        menu.controles(gl, text40, Color.YELLOW);
+        cenario.imagemFundo(gl);
     }
 
     private void primeiraFase(GL2 gl, GLUT glut, float translacao, TextRenderer text30) {
@@ -43,7 +43,7 @@ public class Fases {
                      TextRenderer text30) {
         switch (nivel) {
             case 0:
-                initGame(gl, glut, text100, text40);
+                initGame(gl, text100, text40);
                 break;
             case 1:
                 primeiraFase(gl, glut, translacao, text30);
@@ -61,7 +61,8 @@ public class Fases {
     private void buildCenario(GL2 gl, GLUT glut, float translacao, TextRenderer text30) {
         cenario.barra(gl, glut, translacao);
         mov.moveBall(gl, glut, translacao);
-        cenario.pontuacao(gl, glut, text30, Color.GREEN);
+        cenario.pontuacao(gl,glut, text30, Color.GREEN);
         cenario.listaDeCoracoes(gl);
+        cenario.imagemFundo(gl);
     }
 }

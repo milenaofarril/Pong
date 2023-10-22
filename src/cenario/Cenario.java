@@ -4,6 +4,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.util.awt.TextRenderer;
 import com.jogamp.opengl.util.gl2.GLUT;
 import renderizacao.Cena;
+import textura.Textura;
 
 import java.awt.*;
 
@@ -14,11 +15,16 @@ import static com.jogamp.opengl.math.FloatUtil.TWO_PI;
 public class Cenario {
     private Cena cena;
     private final Menu menu = new Menu();
+    public float limite = 1;
+    private Textura textura = new Textura(1);
+    private int totalTextura;
+    public static final String FACE1 = "image/background.png";
+
 
     public void barra(GL2 gl, GLUT glut, float translacao) {
         gl.glPushMatrix();
         gl.glTranslatef(translacao, 0, 0);
-        gl.glColor3f(1, 1, 1);
+        gl.glColor3f(0, 0, 0);
         gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         gl.glTranslatef(0, -92, 0);
         gl.glScalef(0.5f, 0.15f, 1);
@@ -96,8 +102,26 @@ public class Cenario {
         }
     }
 
-    public void pontuacao(GL2 gl, GLUT glut, TextRenderer textRenderer, Color cor) {
-        menu.texto(gl, 1600, 1020, cor, "PONTUAÇÃO: ", textRenderer);
+    public void pontuacao(GL2 gl,GLUT glut, TextRenderer textRenderer, Color cor) {
+        menu.texto(gl,1600, 1020, cor, "PONTUAÇÃO: ", textRenderer);
+    }
+
+    public void imagemFundo(GL2 gl){
+        gl.glPushMatrix();
+        textura.setAutomatica(false);
+
+        textura.gerarTextura(gl, FACE1, 0);
+
+        gl.glColor3f(1f,1f,1f);
+        gl.glBegin(GL2.GL_QUADS);
+        gl.glTexCoord2f(0.0f, 0.0f);   gl.glVertex3f(-100.0f,-100.0f,-1);
+        gl.glTexCoord2f(0.0f, limite);  gl.glVertex3f(-100.0f,100.0f,-1);
+        gl.glTexCoord2f(limite, limite); gl.glVertex3f(100.0f,100.0f,-1);
+        gl.glTexCoord2f(limite, 0.0f);  gl.glVertex3f(100.0f,-100.0f,-1);
+        gl.glEnd();
+
+        textura.desabilitarTextura(gl, 0);
+        gl.glPopMatrix();
     }
 }
 

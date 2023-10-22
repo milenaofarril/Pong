@@ -1,6 +1,5 @@
 package renderizacao;
 
-import cenario.Cenario;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
@@ -8,7 +7,7 @@ import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.awt.TextRenderer;
 import com.jogamp.opengl.util.gl2.GLUT;
 import fase.Fases;
-import cenario.Menu;
+import textura.Textura;
 
 import java.awt.*;
 
@@ -26,6 +25,10 @@ public class Cena implements GLEventListener {
     private TextRenderer text100;
     private TextRenderer text200;
     private final Fases fases = new Fases();
+    public float limite;
+    private Textura textura = null;
+    private int totalTextura = 1;
+    public static final String FACE1 = "image/background.png";
 
 
 
@@ -42,6 +45,9 @@ public class Cena implements GLEventListener {
         translacao = 0.0f;
         eixoY = 0;
         eixoX = 0;
+        limite = 1;
+
+        textura = new Textura(totalTextura);
 
         text30 = new TextRenderer(new Font("Arial", Font.BOLD, 30));
         text40 = new TextRenderer(new Font("Arial", Font.BOLD, 40));
@@ -65,6 +71,8 @@ public class Cena implements GLEventListener {
         gl.glFlush();
 
     }
+
+
 
     @Override
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {

@@ -1,7 +1,6 @@
 package cenario;
 
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.util.awt.TextRenderer;
 import com.jogamp.opengl.util.gl2.GLUT;
 import renderizacao.Cena;
 import textura.Textura;
@@ -102,8 +101,8 @@ public class Cenario {
         }
     }
 
-    public void pontuacao(GL2 gl,GLUT glut, TextRenderer textRenderer, Color cor) {
-        menu.texto(gl,1600, 1020, cor, "PONTUAÇÃO: ", textRenderer);
+    public void pontuacao(GL2 gl, GLUT glut) {
+        menu.desenhaTextoPequeno(gl,78, 90, "PONTUAÇÃO: ");
     }
 
     public void imagemFundo(GL2 gl){

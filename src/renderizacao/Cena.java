@@ -20,10 +20,6 @@ public class Cena implements GLEventListener {
     public float translacao;
     public float eixoX;
     public float eixoY;
-    private TextRenderer text30;
-    private TextRenderer text40;
-    private TextRenderer text100;
-    private TextRenderer text200;
     private final Fases fases = new Fases();
     public float limite;
     private Textura textura = null;
@@ -49,10 +45,6 @@ public class Cena implements GLEventListener {
 
         textura = new Textura(totalTextura);
 
-        text30 = new TextRenderer(new Font("Arial", Font.BOLD, 30));
-        text40 = new TextRenderer(new Font("Arial", Font.BOLD, 40));
-        text100 = new TextRenderer(new Font("Arial", Font.BOLD, 100));
-        text200 = new TextRenderer(new Font("Arial", Font.BOLD, 200));
     }
 
     @Override
@@ -66,7 +58,7 @@ public class Cena implements GLEventListener {
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
 
-        fases.fase(gl,glut,translacao,text100,text40,text30);
+        fases.fase(gl,glut,translacao);
 
         gl.glFlush();
 

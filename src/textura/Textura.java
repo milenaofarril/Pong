@@ -16,12 +16,10 @@ public class Textura {
     private int wrap;
     private boolean automatica;
 
-    //Construtor da Classe Textura
     public Textura(int totalTextura) {
         vetTextures = new Texture[totalTextura];
     }
 
-    //getters/setters
     public float getWidth() {
         return width;
     }
@@ -106,7 +104,7 @@ public class Textura {
         gl.glTexGeni(GL2.GL_S, GL2.GL_TEXTURE_GEN_MODE, genModo);
         gl.glTexGeni(GL2.GL_T, GL2.GL_TEXTURE_GEN_MODE, genModo);
 
-        //GL_EYE_PLANE ou GL_OBJECT_PLANE
+
         gl.glTexGenfv(GL2.GL_S, GL2.GL_OBJECT_PLANE, planoS, 0);
         gl.glTexGenfv(GL2.GL_T, GL2.GL_OBJECT_PLANE, planoT, 0);
     }

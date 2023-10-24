@@ -22,8 +22,7 @@ public class Fases {
     private void initGame(GL2 gl, GLUT glut) {
         menu.titulo(gl, glut);
         menu.controles(gl);
-        cenario.imagemFundo(gl);
-
+        cenario.fundoMenu(gl);
     }
 
     private void primeiraFase(GL2 gl, GLUT glut, float translacao) {
@@ -33,12 +32,12 @@ public class Fases {
     private void segundaFase(GL2 gl, GLUT glut, float translacao) {
         buildCenario(gl, glut, translacao);
         cenario.listaDeObstaculo(gl, glut);
-        cenario.imagemFundo(gl);
 
     }
 
     private void gameOver(GL2 gl, GLUT glut) {
-
+        menu.titulo(gl, glut);
+        cenario.imagemGameOver(gl);
     }
 
     public void fase(GL2 gl, GLUT glut, float translacao) {

@@ -24,7 +24,9 @@ public class Cena implements GLEventListener {
     public float limite;
     private Textura textura = null;
     private int totalTextura = 1;
-    public static final String FACE1 = "image/background.png";
+    public static final String FACE1 = "image/backgroundMenu.png";
+    public static final String FACE2 = "image/background.png";
+    public static final String FACE3 = "image/gameover.png";
 
 
 

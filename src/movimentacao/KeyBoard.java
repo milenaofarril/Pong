@@ -1,5 +1,6 @@
 package movimentacao;
 
+import cenario.Cenario;
 import com.jogamp.newt.event.KeyEvent;
 import com.jogamp.newt.event.KeyListener;
 import fase.Fases;
@@ -19,17 +20,20 @@ public class KeyBoard implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ESCAPE || e.getKeyCode() == KeyEvent.VK_F)
-            System.exit(0);
 
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT && cena.translacao < 90)
-            cena.translacao += 10;
+            if (e.getKeyCode() == KeyEvent.VK_ESCAPE || e.getKeyCode() == KeyEvent.VK_F)
+                System.exit(0);
 
-        if (e.getKeyCode() == KeyEvent.VK_LEFT && cena.translacao > -90)
-            cena.translacao -= 10;
+            if (e.getKeyCode() == KeyEvent.VK_RIGHT && cena.translacao < 90)
+                cena.translacao += 10;
 
-        if (e.getKeyCode() == KeyEvent.VK_S) {
-            Fases.nivel = 1;
+            if (e.getKeyCode() == KeyEvent.VK_LEFT && cena.translacao > -90)
+                cena.translacao -= 10;
+
+            if (e.getKeyCode() == KeyEvent.VK_S) {
+                Fases.nivel = 1;
+
+
+            }
         }
     }
-}

@@ -1,45 +1,49 @@
 package cenario;
 
 import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.util.awt.TextRenderer;
 import com.jogamp.opengl.util.gl2.GLUT;
-import renderizacao.Renderer;
 
-import java.awt.*;
-import static com.jogamp.opengl.GL.GL_FRONT_AND_BACK;
-import static com.jogamp.opengl.GL2GL3.GL_FILL;
 
 public class Menu {
-    public void titulo(GL2 gl, GLUT glut, TextRenderer textRenderer, Color cor){
-
-        texto(gl,780, 850, cor, "PONG", textRenderer);
-
+    public void titulo(GL2 gl, GLUT glut){
+        gl.glPushMatrix();
+        gl.glColor3f(0,1,0);
+        desenhaTextoGrande(gl,0, 65,"");
+        gl.glPopMatrix();
     }
-    public void controles(GL2 gl, GLUT glut, TextRenderer textRenderer, Color cor){
+    public void controles(GL2 gl){
 
-        texto(gl,750, 750, cor, "S | Start (Inicia o jogo)", textRenderer);
-        texto(gl,750, 700, cor, "P | Pause (Pausa o jogo)", textRenderer);
-        texto(gl,750, 650, cor, "R | Resume (Retoma o jogo)", textRenderer);
-        texto(gl,750, 600, cor, "F | Finish (Menu inicial)", textRenderer);
-        texto(gl,750, 550, cor, "→ | Mover para direita", textRenderer);
-        texto(gl,750, 500, cor, "← | Mover para esquerda", textRenderer);
-        texto(gl,400, 350, cor, "Objetivo:  Evitar a bolinha de cair", textRenderer);
-        texto(gl,400, 300, cor, "Como Jogar: Movimentar a barra inferior para a esquerda e direita", textRenderer);
-        texto(gl,400, 250, cor, "Jogador vence ao completar todas as fases sem perder as 5 vidas.", textRenderer);
+        gl.glColor3f(1,1,0);
+        desenhaTextoMedio(gl,-30, 50, "");
     }
 
-    public void pausaJogo(GL2 gl, GLUT glut, TextRenderer textRenderer, Color cor){
+    public void pontuacao(GL2 gl, GLUT glut) {
+        desenhaTextoGrande(gl,78, 90, "PONTUAÇÃO: ");
+    }
 
-        texto(gl,790, 600, cor, "PAUSE", textRenderer);
+    public void pausaJogo(GL2 gl){
+
+        desenhaTextoGrande(gl,0, 0, "PAUSE");
 
     }
 
-    public void texto(GL2 gl, int xPosicao, int yPosicao, Color cor, String frase, TextRenderer textRenderer){
+    public void desenhaTextoGrande(GL2 gl, int x, int y, String frase) {
+
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_FILL);
-        textRenderer.beginRendering(Renderer.screenWidth, Renderer.screenHeight);
-        textRenderer.setColor(cor);
-        textRenderer.draw(frase, xPosicao, yPosicao);
-        textRenderer.endRendering();
-        gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_FILL);
+        GLUT glut = new GLUT();
+        gl.glRasterPos2f(x, y);;
+        glut.glutBitmapString(GLUT.BITMAP_TIMES_ROMAN_24, frase);
+
+    }
+    public void desenhaTextoMedio(GL2 gl, int x, int y, String frase) {
+        GLUT glut = new GLUT();
+        gl.glRasterPos2f(x, y);
+        glut.glutBitmapString(GLUT.BITMAP_HELVETICA_18, frase);
+    }
+
+    public void desenhaTextoPequeno(GL2 gl, int x, int y, String frase) {
+        GLUT glut = new GLUT();
+        gl.glRasterPos2f(x, y);
+        glut.glutBitmapString(GLUT.BITMAP_9_BY_15, frase);
     }
 }

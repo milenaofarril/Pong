@@ -1,6 +1,5 @@
 package renderizacao;
 
-import cenario.Cenario;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
@@ -8,7 +7,7 @@ import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.awt.TextRenderer;
 import com.jogamp.opengl.util.gl2.GLUT;
 import fase.Fases;
-import cenario.Menu;
+import textura.Textura;
 
 import java.awt.*;
 
@@ -21,11 +20,14 @@ public class Cena implements GLEventListener {
     public float translacao;
     public float eixoX;
     public float eixoY;
-    private TextRenderer text30;
-    private TextRenderer text40;
-    private TextRenderer text100;
-    private TextRenderer text200;
     private final Fases fases = new Fases();
+    public float limite;
+    private Textura textura = null;
+    private int totalTextura = 4;
+    public static final String FACE1 = "image/backgroundMenu.png";
+    public static final String FACE2 = "image/background.png";
+    public static final String FACE3 = "image/gameover.png";
+    public static final String FACE4 = "image/pause.png";
 
 
 
@@ -42,11 +44,10 @@ public class Cena implements GLEventListener {
         translacao = 0.0f;
         eixoY = 0;
         eixoX = 0;
+        limite = 1;
 
-        text30 = new TextRenderer(new Font("Arial", Font.BOLD, 30));
-        text40 = new TextRenderer(new Font("Arial", Font.BOLD, 40));
-        text100 = new TextRenderer(new Font("Arial", Font.BOLD, 100));
-        text200 = new TextRenderer(new Font("Arial", Font.BOLD, 200));
+        textura = new Textura(totalTextura);
+
     }
 
     @Override
@@ -60,11 +61,13 @@ public class Cena implements GLEventListener {
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
 
-        fases.fase(gl,glut,translacao,text100,text40,text30);
+        fases.fase(gl,glut,translacao);
 
         gl.glFlush();
 
     }
+
+
 
     @Override
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {

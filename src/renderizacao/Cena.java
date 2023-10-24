@@ -23,10 +23,11 @@ public class Cena implements GLEventListener {
     private final Fases fases = new Fases();
     public float limite;
     private Textura textura = null;
-    private int totalTextura = 1;
+    private int totalTextura = 4;
     public static final String FACE1 = "image/backgroundMenu.png";
     public static final String FACE2 = "image/background.png";
     public static final String FACE3 = "image/gameover.png";
+    public static final String FACE4 = "image/pause.png";
 
 
 

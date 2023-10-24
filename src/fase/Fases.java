@@ -61,7 +61,7 @@ public class Fases {
     private void buildCenario(GL2 gl, GLUT glut, float translacao) {
         cenario.barra(gl, glut, translacao);
         mov.moveBall(gl, glut, translacao);
-        cenario.pontuacao(gl,glut);
+        menu.pontuacao(gl,glut);
         cenario.listaDeCoracoes(gl);
         cenario.imagemFundo(gl);
     }

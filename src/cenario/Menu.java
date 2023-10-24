@@ -17,6 +17,10 @@ public class Menu {
         desenhaTextoMedio(gl,-30, 50, "");
     }
 
+    public void pontuacao(GL2 gl, GLUT glut) {
+        desenhaTextoGrande(gl,78, 90, "PONTUAÇÃO: ");
+    }
+
     public void pausaJogo(GL2 gl){
 
         desenhaTextoGrande(gl,0, 0, "PAUSE");

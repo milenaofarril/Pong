@@ -37,7 +37,8 @@ public class Fases {
 
     private void gameOver(GL2 gl, GLUT glut) {
         menu.titulo(gl, glut);
-        cenario.imagemGameOver(gl);
+        //cenario.imagemGameOver(gl);
+        cenario.imagemFinal(gl);
     }
 
     public void fase(GL2 gl, GLUT glut, float translacao) {

@@ -15,12 +15,13 @@ public class Cenario {
     private Cena cena;
     private final Menu menu = new Menu();
     public float limite = 1;
-    private Textura textura = new Textura(4);
+    private Textura textura = new Textura(5);
     private int totalTextura;
     public static final String FACE1 = "image/backgroundMenu.png";
     public static final String FACE2 = "image/background.png";
     public static final String FACE3 = "image/gameover.png";
     public static final String FACE4 = "image/pause.png";
+    public static final String FACE5 = "image/final.png";
 
 
     public void barra(GL2 gl, GLUT glut, float translacao) {
@@ -175,5 +176,24 @@ public class Cenario {
         textura.desabilitarTextura(gl, 3);
         gl.glPopMatrix();
     }
+
+    public void imagemFinal(GL2 gl){
+        gl.glPushMatrix();
+        textura.setAutomatica(false);
+
+        textura.gerarTextura(gl, FACE5, 4);
+
+        gl.glColor3f(1f,1f,1f);
+        gl.glBegin(GL2.GL_QUADS);
+        gl.glTexCoord2f(0.0f, 0.0f);   gl.glVertex3f(-100.0f,-100.0f,1);
+        gl.glTexCoord2f(0.0f, limite);  gl.glVertex3f(-100.0f,100.0f,1);
+        gl.glTexCoord2f(limite, limite); gl.glVertex3f(100.0f,100.0f,1);
+        gl.glTexCoord2f(limite, 0.0f);  gl.glVertex3f(100.0f,-100.0f,1);
+        gl.glEnd();
+
+        textura.desabilitarTextura(gl, 4);
+        gl.glPopMatrix();
+    }
+
 }
 

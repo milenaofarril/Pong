@@ -10,9 +10,9 @@ public class MovBall {
 
     private static float ballY = 80f;
 
-    private static float ballSpeedX = 1f;
+    private static float ballSpeedX = 1.5f;
 
-    private static float ballSpeedY = 1f;
+    private static float ballSpeedY = 1.5f;
     private int score = 0;
     private Cenario cenario = new Cenario();
 

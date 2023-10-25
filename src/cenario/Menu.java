@@ -8,7 +8,7 @@ public class Menu {
     public void titulo(GL2 gl, GLUT glut){
         gl.glPushMatrix();
         gl.glColor3f(0,1,0);
-        desenhaTextoGrande(gl,0, 65,"");
+        desenhaTextoGrande(gl,0, 65,10,"");
         gl.glPopMatrix();
     }
     public void controles(GL2 gl){
@@ -18,20 +18,21 @@ public class Menu {
     }
 
     public void pontuacao(GL2 gl, GLUT glut) {
-        desenhaTextoGrande(gl,78, 90, "PONTUAÇÃO: ");
+        gl.glColor3f(1,1,0);
+        desenhaTextoGrande(gl,78, 90, 100,"PONTUAÇÃO: ");
     }
 
     public void pausaJogo(GL2 gl){
 
-        desenhaTextoGrande(gl,0, 0, "PAUSE");
+        desenhaTextoGrande(gl,0, 0,10,"PAUSE");
 
     }
 
-    public void desenhaTextoGrande(GL2 gl, int x, int y, String frase) {
+    public void desenhaTextoGrande(GL2 gl, int x, int y, int z, String frase) {
 
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_FILL);
         GLUT glut = new GLUT();
-        gl.glRasterPos2f(x, y);;
+        gl.glRasterPos3f(x, y, z);
         glut.glutBitmapString(GLUT.BITMAP_TIMES_ROMAN_24, frase);
 
     }

@@ -63,10 +63,10 @@ public class Cena implements GLEventListener {
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
 
-        if (iluminacao.liga) {
-            iluminacao.iluminacaoAmbiente(gl);
-            iluminacao.ligaLuz(gl);
-        }
+       // if (iluminacao.liga) {
+       //     iluminacao.iluminacaoAmbiente(gl);
+       //     iluminacao.ligaLuz(gl);
+       // }
 
         fases.fase(gl,glut,translacao);
 

@@ -46,10 +46,10 @@ public class Fases {
             case 0:
                 initGame(gl, glut);
                 break;
-            case 1:
+            case 2:
                 primeiraFase(gl, glut, translacao);
                 break;
-            case 2:
+            case 1:
                 segundaFase(gl, glut, translacao);
                 break;
             case 3:

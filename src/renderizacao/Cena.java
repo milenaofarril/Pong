@@ -1,5 +1,6 @@
 package renderizacao;
 
+import cenario.Iluminacao;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
@@ -21,6 +22,7 @@ public class Cena implements GLEventListener {
     public float eixoX;
     public float eixoY;
     private final Fases fases = new Fases();
+    private final Iluminacao iluminacao = new Iluminacao();
     public float limite;
     private Textura textura = null;
     private int totalTextura = 4;
@@ -60,6 +62,11 @@ public class Cena implements GLEventListener {
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
+
+       // if (iluminacao.liga) {
+       //     iluminacao.iluminacaoAmbiente(gl);
+       //     iluminacao.ligaLuz(gl);
+       // }
 
         fases.fase(gl,glut,translacao);
 

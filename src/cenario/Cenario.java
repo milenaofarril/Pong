@@ -14,6 +14,7 @@ import static com.jogamp.opengl.math.FloatUtil.TWO_PI;
 public class Cenario {
     private Cena cena;
     private final Menu menu = new Menu();
+    private final Iluminacao iluminacao = new Iluminacao();
     public float limite = 1;
     private Textura textura = new Textura(5);
     private int totalTextura;
@@ -37,10 +38,17 @@ public class Cenario {
 
     public void bolinha(GL2 gl, GLUT glut) {
         gl.glPushMatrix();
-        gl.glColor3f(1, 0, 0);
+        gl.glColor3f(1, 1, 0);
         gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glut.glutSolidSphere(5, 50, 50);
+
+        if (iluminacao.liga) {
+            iluminacao.iluminacaoAmbiente(gl);
+            iluminacao.ligaLuz(gl);
+        }
         gl.glPopMatrix();
+
+
     }
 
     public void vida(GL2 gl) {

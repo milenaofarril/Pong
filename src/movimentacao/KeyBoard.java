@@ -1,14 +1,16 @@
 package movimentacao;
 
-import cenario.Cenario;
 import com.jogamp.newt.event.KeyEvent;
 import com.jogamp.newt.event.KeyListener;
-import fase.Fases;
+import com.jogamp.opengl.GL2;
+import fase.Level;
 import renderizacao.Cena;
 
 public class KeyBoard implements KeyListener {
 
     private final Cena cena;
+
+    private final Level level = new Level();
 
     public KeyBoard(Cena cena) {
         this.cena = cena;
@@ -21,19 +23,28 @@ public class KeyBoard implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-            if (e.getKeyCode() == KeyEvent.VK_ESCAPE || e.getKeyCode() == KeyEvent.VK_F)
-                System.exit(0);
+        if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
+            System.exit(0);
 
-            if (e.getKeyCode() == KeyEvent.VK_RIGHT && cena.translacao < 90)
-                cena.translacao += 10;
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT && cena.translation < 90)
+            cena.translation += 10;
 
-            if (e.getKeyCode() == KeyEvent.VK_LEFT && cena.translacao > -90)
-                cena.translacao -= 10;
+        if (e.getKeyCode() == KeyEvent.VK_LEFT && cena.translation > -90)
+            cena.translation -= 10;
 
-            if (e.getKeyCode() == KeyEvent.VK_S) {
-                Fases.nivel = 1;
-
-
-            }
+        if (e.getKeyCode() == KeyEvent.VK_P) {
+            level.setPause(true);
+        } else if (e.getKeyCode() == KeyEvent.VK_R) {
+            level.setPause(false);
         }
+
+        if (e.getKeyCode() == KeyEvent.VK_S) {
+            level.setLevel(1);
+        }
+        if (e.getKeyCode() == KeyEvent.VK_F) {
+            level.setLevel(0);
+            level.reset();
+        }
+
     }
+}

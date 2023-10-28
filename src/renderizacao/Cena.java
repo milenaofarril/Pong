@@ -4,31 +4,16 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
-import com.jogamp.opengl.util.awt.TextRenderer;
 import com.jogamp.opengl.util.gl2.GLUT;
-import fase.Fases;
+import fase.Level;
 import textura.Textura;
 
-import java.awt.*;
-
 public class Cena implements GLEventListener {
-    private static GL2 gl;
-    private static GLUT glut;
     private float xMin, xMax, yMin, yMax, zMin, zMax;
     GLU glu;
-    public float angulo;
-    public float translacao;
-    public float eixoX;
-    public float eixoY;
-    private final Fases fases = new Fases();
-    public float limite;
-    private Textura textura = null;
-    private int totalTextura = 4;
-    public static final String FACE1 = "image/backgroundMenu.png";
-    public static final String FACE2 = "image/background.png";
-    public static final String FACE3 = "image/gameover.png";
-    public static final String FACE4 = "image/pause.png";
-
+    public float translation;
+    private final Level level = new Level();
+    public float limit;
 
 
     @Override
@@ -40,13 +25,11 @@ public class Cena implements GLEventListener {
         xMax = yMax = zMax = 100;
 
         gl.glEnable(GL2.GL_DEPTH_TEST);
-        angulo = 0;
-        translacao = 0.0f;
-        eixoY = 0;
-        eixoX = 0;
-        limite = 1;
+        translation = 0.0f;
+        limit = 1;
 
-        textura = new Textura(totalTextura);
+        int totalTexture = 4;
+        new Textura(totalTexture);
 
     }
 
@@ -61,7 +44,7 @@ public class Cena implements GLEventListener {
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
 
-        fases.fase(gl,glut,translacao);
+        level.level(gl,glut, translation);
 
         gl.glFlush();
 

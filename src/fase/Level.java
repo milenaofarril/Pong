@@ -43,7 +43,9 @@ public class Level {
     }
 
     private void secondLevel(GL2 gl, GLUT glut, float translation) {
-         if (scenario.getNumHeart() > 0 && !isPause()) {
+        if (mov.getScore() == 400) {
+            youWon(gl);
+        } else if (scenario.getNumHeart() > 0 && !isPause()) {
             buildScenario(gl, glut, translation);
         } else if (scenario.getNumHeart() <= 0) {
             gameOver(gl);

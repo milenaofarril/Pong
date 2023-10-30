@@ -47,7 +47,7 @@ public class MovBall {
     }
 
     private void increasesScore() {
-        score += 200;
+        score += 25;
     }
 
     public void checkCollisionObs(){

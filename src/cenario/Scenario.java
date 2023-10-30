@@ -2,16 +2,16 @@ package cenario;
 
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.util.gl2.GLUT;
-import movimentacao.MovBall;
-import textura.Textura;
+import textura.Texture;
 
 import static com.jogamp.opengl.GL.GL_FRONT_AND_BACK;
 import static com.jogamp.opengl.GL2GL3.GL_FILL;
 import static com.jogamp.opengl.math.FloatUtil.TWO_PI;
 
 public class Scenario {
+    private final Lighting lighting = new Lighting();
     public float limit = 1;
-    private Textura texture = new Textura(5);
+    private Texture texture = new Texture(5);
     public static final String FACE1 = "src/image/backgroundMenu.png";
     public static final String FACE2 = "src/image/background.png";
     public static final String FACE3 = "src/image/gameover.png";
@@ -25,7 +25,7 @@ public class Scenario {
     };
 
 
-    public void barra(GL2 gl, GLUT glut, float translation) {
+    public void bar(GL2 gl, GLUT glut, float translation) {
         gl.glPushMatrix();
         gl.glTranslatef(translation, 0, 0);
         gl.glColor3f(0, 0, 0);
@@ -41,6 +41,11 @@ public class Scenario {
         gl.glColor3f(1, 0, 0);
         gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glut.glutSolidSphere(5, 50, 50);
+
+        if (lighting.on) {
+            lighting.ambientLighting(gl);
+            lighting.lightsOn(gl);
+        }
         gl.glPopMatrix();
     }
 
@@ -80,7 +85,7 @@ public class Scenario {
         gl.glPushMatrix();
         gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         gl.glTranslatef(-66.6f, 80, 0);
-        gl.glScalef(1.328f, 0.15f, 1);
+        gl.glScalef(0.6f, 0.15f, 1);
         glut.glutSolidCube(50);
         gl.glPopMatrix();
 
@@ -91,18 +96,18 @@ public class Scenario {
             for (int j = 0; j < 3; j++) {
                 gl.glPushMatrix();
                 gl.glColor3f(obstacleProperties[j][0], obstacleProperties[j][1], obstacleProperties[j][2]);
-                gl.glTranslatef(i * 66.6f, -j * 8.2f, 0);
+                gl.glTranslatef(i * 66.6f, -j * 35.2f, 0);
                 drawObstacle(gl, glut);
                 gl.glPopMatrix();
             }
         }
     }
 
-    public void bottomMenu(GL2 gl) {
+    public void backgroundMenu(GL2 gl) {
         gl.glPushMatrix();
-        texture.setAutomatica(false);
+        texture.setAutomatic(false);
 
-        texture.gerarTextura(gl, FACE1, 0);
+        texture.createTexture(gl, FACE1, 0);
 
         gl.glColor3f(1f, 1f, 1f);
         gl.glBegin(GL2.GL_QUADS);
@@ -116,15 +121,15 @@ public class Scenario {
         gl.glVertex3f(100.0f, -100.0f, -1);
         gl.glEnd();
 
-        texture.desabilitarTextura(gl, 0);
+        texture.disableTexture(gl, 0);
         gl.glPopMatrix();
     }
 
-    public void imgBottom(GL2 gl) {
+    public void imgBackground(GL2 gl) {
         gl.glPushMatrix();
-        texture.setAutomatica(false);
+        texture.setAutomatic(false);
 
-        texture.gerarTextura(gl, FACE2, 1);
+        texture.createTexture(gl, FACE2, 1);
 
         gl.glColor3f(1f, 1f, 1f);
         gl.glBegin(GL2.GL_QUADS);
@@ -138,15 +143,15 @@ public class Scenario {
         gl.glVertex3f(100.0f, -100.0f, -1);
         gl.glEnd();
 
-        texture.desabilitarTextura(gl, 1);
+        texture.disableTexture(gl, 1);
         gl.glPopMatrix();
     }
 
     public void imgGameOver(GL2 gl) {
         gl.glPushMatrix();
-        texture.setAutomatica(false);
+        texture.setAutomatic(false);
 
-        texture.gerarTextura(gl, FACE3, 2);
+        texture.createTexture(gl, FACE3, 2);
 
         gl.glColor3f(1f, 1f, 1f);
         gl.glBegin(GL2.GL_QUADS);
@@ -160,15 +165,15 @@ public class Scenario {
         gl.glVertex3f(100.0f, -100.0f, 1);
         gl.glEnd();
 
-        texture.desabilitarTextura(gl, 2);
+        texture.disableTexture(gl, 2);
         gl.glPopMatrix();
     }
 
     public void imgPause(GL2 gl) {
         gl.glPushMatrix();
-        texture.setAutomatica(false);
+        texture.setAutomatic(false);
 
-        texture.gerarTextura(gl, FACE4, 3);
+        texture.createTexture(gl, FACE4, 3);
 
         gl.glColor3f(1f, 1f, 1f);
         gl.glBegin(GL2.GL_QUADS);
@@ -182,15 +187,15 @@ public class Scenario {
         gl.glVertex3f(100.0f, -100.0f, 1);
         gl.glEnd();
 
-        texture.desabilitarTextura(gl, 3);
+        texture.disableTexture(gl, 3);
         gl.glPopMatrix();
     }
 
     public void imgFinal(GL2 gl) {
         gl.glPushMatrix();
-        texture.setAutomatica(false);
+        texture.setAutomatic(false);
 
-        texture.gerarTextura(gl, FACE5, 4);
+        texture.createTexture(gl, FACE5, 4);
 
         gl.glColor3f(1f, 1f, 1f);
         gl.glBegin(GL2.GL_QUADS);
@@ -204,7 +209,7 @@ public class Scenario {
         gl.glVertex3f(100.0f, -100.0f, 1);
         gl.glEnd();
 
-        texture.desabilitarTextura(gl, 4);
+        texture.disableTexture(gl, 4);
         gl.glPopMatrix();
     }
 

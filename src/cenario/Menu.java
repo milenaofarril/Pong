@@ -15,7 +15,7 @@ public class Menu {
         gl.glPopMatrix();
     }
 
-    public void punctuation(GL2 gl) {
+    public void points(GL2 gl) {
         bigText(gl,65, 90, "PONTUAÇÃO: ");
         bigText(gl, 85, 90, Integer.toString(mov.getScore()));
     }
@@ -28,7 +28,7 @@ public class Menu {
         glut.glutBitmapString(GLUT.BITMAP_TIMES_ROMAN_24, phrase);
 
     }
-    public void averageText(GL2 gl, int x, int y, String phrase) {
+    public void mediumText(GL2 gl, int x, int y, String phrase) {
         GLUT glut = new GLUT();
         gl.glRasterPos2f(x, y);
         glut.glutBitmapString(GLUT.BITMAP_HELVETICA_18, phrase);

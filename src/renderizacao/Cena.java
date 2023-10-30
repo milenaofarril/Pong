@@ -6,12 +6,12 @@ import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.glu.GLU;
 import com.jogamp.opengl.util.gl2.GLUT;
 import fase.Level;
-import textura.Textura;
+import textura.Texture;
 
 public class Cena implements GLEventListener {
     private float xMin, xMax, yMin, yMax, zMin, zMax;
     GLU glu;
-    public float translation;
+    public float translate;
     private final Level level = new Level();
     public float limit;
 
@@ -25,11 +25,11 @@ public class Cena implements GLEventListener {
         xMax = yMax = zMax = 100;
 
         gl.glEnable(GL2.GL_DEPTH_TEST);
-        translation = 0.0f;
+        translate = 0.0f;
         limit = 1;
 
         int totalTexture = 4;
-        new Textura(totalTexture);
+        new Texture(totalTexture);
 
     }
 
@@ -44,13 +44,11 @@ public class Cena implements GLEventListener {
         gl.glLoadIdentity();
         gl.glPolygonMode(GL2.GL_FRONT_AND_BACK, GL2.GL_LINE);
 
-        level.level(gl,glut, translation);
+        level.level(gl,glut, translate);
 
         gl.glFlush();
 
     }
-
-
 
     @Override
     public void reshape(GLAutoDrawable drawable, int x, int y, int width, int height) {

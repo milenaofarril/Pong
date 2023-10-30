@@ -2,7 +2,6 @@ package fase;
 
 import cenario.Scenario;
 import cenario.Menu;
-import com.jogamp.opengl.GL;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.util.gl2.GLUT;
 import movimentacao.MovBall;
@@ -17,7 +16,7 @@ public class Level {
 
     private void initGame(GL2 gl) {
         menu.title(gl);
-        scenario.bottomMenu(gl);
+        scenario.backgroundMenu(gl);
     }
 
     private void firstLevel(GL2 gl, GLUT glut, float translation) {
@@ -43,7 +42,7 @@ public class Level {
         }
     }
 
-    private void twoLevel(GL2 gl, GLUT glut, float translation) {
+    private void secondLevel(GL2 gl, GLUT glut, float translation) {
          if (scenario.getNumHeart() > 0 && !isPause()) {
             buildScenario(gl, glut, translation);
         } else if (scenario.getNumHeart() <= 0) {
@@ -98,18 +97,18 @@ public class Level {
                 firstLevel(gl, glut, translation);
                 break;
             case 2:
-                twoLevel(gl, glut, translation);
+                secondLevel(gl, glut, translation);
                 break;
         }
 
     }
 
     private void buildScenario(GL2 gl, GLUT glut, float translation) {
-        scenario.barra(gl, glut, translation);
+        scenario.bar(gl, glut, translation);
         mov.moveBall(gl, glut, translation);
-        menu.punctuation(gl);
+        menu.points(gl);
         scenario.HeartList(gl);
-        scenario.imgBottom(gl);
+        scenario.imgBackground(gl);
         if(getLevel() == 2){
             scenario.obstaclesList(gl, glut);
             mov.checkCollisionObs();

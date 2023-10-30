@@ -3,6 +3,7 @@ package movimentacao;
 import cenario.Scenario;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.util.gl2.GLUT;
+import fase.Level;
 
 public class MovBall {
 
@@ -47,7 +48,11 @@ public class MovBall {
     }
 
     private void increasesScore() {
-        score += 50;
+        if(Level.getLevel() == 1){
+            score += 50;
+        }else if(Level.getLevel() == 2){
+            score += 25;
+        }
     }
 
     public void checkCollisionObs(){

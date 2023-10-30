@@ -16,7 +16,7 @@ public class MovBall {
     private final Scenario scenario = new Scenario();
 
 
-    public void moveBall(GL2 gl, GLUT glut, float translacao) {
+    public void moveBall(GL2 gl, GLUT glut, float translate) {
         gl.glPushMatrix();
         gl.glTranslatef(ballX, ballY, 0);
         scenario.ball(gl, glut);
@@ -32,11 +32,11 @@ public class MovBall {
         if (ballY > 80f) {
             ballSpeedY = -ballSpeedY;
         }
-        checkCollision(translacao);
+        checkCollision(translate);
     }
 
-    private void checkCollision(float translacao) {
-        if (ballY <= -85 && ballX >= translacao - 15 && ballX <= translacao + 15) {
+    private void checkCollision(float translate) {
+        if (ballY <= -85 && ballX >= translate - 15 && ballX <= translate + 15) {
             ballSpeedY = -ballSpeedY;
             increasesScore();
         }
@@ -47,7 +47,7 @@ public class MovBall {
     }
 
     private void increasesScore() {
-        score += 25;
+        score += 50;
     }
 
     public void checkCollisionObs(){

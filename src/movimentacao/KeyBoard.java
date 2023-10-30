@@ -2,7 +2,6 @@ package movimentacao;
 
 import com.jogamp.newt.event.KeyEvent;
 import com.jogamp.newt.event.KeyListener;
-import com.jogamp.opengl.GL2;
 import fase.Level;
 import renderizacao.Cena;
 
@@ -26,11 +25,11 @@ public class KeyBoard implements KeyListener {
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE)
             System.exit(0);
 
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT && cena.translation < 90)
-            cena.translation += 10;
+        if (e.getKeyCode() == KeyEvent.VK_RIGHT && cena.translate < 90)
+            cena.translate += 10;
 
-        if (e.getKeyCode() == KeyEvent.VK_LEFT && cena.translation > -90)
-            cena.translation -= 10;
+        if (e.getKeyCode() == KeyEvent.VK_LEFT && cena.translate > -90)
+            cena.translate -= 10;
 
         if (e.getKeyCode() == KeyEvent.VK_P) {
             level.setPause(true);

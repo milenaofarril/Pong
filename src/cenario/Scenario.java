@@ -84,7 +84,7 @@ public class Scenario {
     public void drawObstacle(GL2 gl, GLUT glut) {
         gl.glPushMatrix();
         gl.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        gl.glTranslatef(-66.6f, 80, 0);
+        gl.glTranslatef(-66.6f, 40, 0);
         gl.glScalef(0.6f, 0.15f, 1);
         glut.glutSolidCube(50);
         gl.glPopMatrix();
@@ -93,13 +93,11 @@ public class Scenario {
 
     public void obstaclesList(GL2 gl, GLUT glut) {
         for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
                 gl.glPushMatrix();
-                gl.glColor3f(obstacleProperties[j][0], obstacleProperties[j][1], obstacleProperties[j][2]);
-                gl.glTranslatef(i * 66.6f, -j * 35.2f, 0);
+                gl.glColor3f(obstacleProperties[i][0], obstacleProperties[i][1], obstacleProperties[i][2]);
+                gl.glTranslatef(i * 66f, 8.2f, 0);
                 drawObstacle(gl, glut);
                 gl.glPopMatrix();
-            }
         }
     }
 

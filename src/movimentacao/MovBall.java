@@ -11,8 +11,6 @@ public class MovBall {
     private static float ballY = 5f;
     private static float ballSpeedX = 2f;
     private static float ballSpeedY = 2f;
-    private float obstacleWidth = 50;
-    private float obstacleHeight = 13;
     private static int score;
     private final Scenario scenario = new Scenario();
 
@@ -56,30 +54,25 @@ public class MovBall {
     }
 
     public void checkCollisionObs(){
-        for (int i = 0; i < 3; i++) {
-            float obstacleX = i * 66.6f;
-            float obstacleY = 72;
-            if (checkBallObstacleCollision(ballX, ballY, obstacleX, obstacleY, obstacleWidth, obstacleHeight)) {
-                ballSpeedY = -ballSpeedY;
-            }
-        }
-
-        for (int i = 0; i < 3; i++) {
-            float obstacleX = i * 66.6f;
-            float obstacleY = 62;
-            if (checkBallObstacleCollision(ballX, ballY, obstacleX, obstacleY, obstacleWidth, obstacleHeight)) {
-                ballSpeedY = -ballSpeedY;
-            }
-        }
-
-        for (int i = 0; i < 3; i++) {
-            float obstacleX = i * -66.6f;
-            float obstacleY = 48;
+        float obstacleWidth = 25.0f;
+        float obstacleHeight = 10;
+        for (int i = 0; i < 2; i++) {
+            float obstacleX = i * 66f;
+            float obstacleY = 40;
 
             if (checkBallObstacleCollision(ballX, ballY, obstacleX, obstacleY, obstacleWidth, obstacleHeight)) {
                 ballSpeedY = -ballSpeedY;
             }
         }
+
+        float obstacleX = -66f;
+        float obstacleY = 40;
+
+        if (checkBallObstacleCollision(ballX, ballY, obstacleX, obstacleY, obstacleWidth, obstacleHeight)) {
+            ballSpeedY = -ballSpeedY;
+        }
+
+
     }
 
     private boolean checkBallObstacleCollision(float ballX, float ballY, float obstacleX, float obstacleY, float obstacleWidth, float obstacleHeight) {

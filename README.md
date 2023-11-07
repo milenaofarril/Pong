@@ -35,9 +35,10 @@ Para rodar o projeto é necessário adicionar a biblioteca do OPENGL.
 [JOGL_MacOs](https://github.com/milenaofarril/Pong/blob/main/JOGL/JOGL_MacOS.zip)
 
     2. Extraia a pasta JOGL para a pasta Documentos
+<b>
 
-
-    3. Na IDE abra as configurações de Biblioteca para adicionar uma nova e indique o caminho que você deixou a pasta JOGL
+    3. Na IDE abra as configurações de Biblioteca para adicionar uma nova e indique o caminho que você 
+        deixou a pasta JOGL
 
 
 ## Autores

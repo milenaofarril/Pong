@@ -8,7 +8,7 @@ Este projeto consiste em um jogo desenvolvido em Java utilizando a biblioteca do
 
 *Fase 1:* O objetivo é apenas evitar a bolinha de cair, para isso o jogador deve movimentar a barra inferior para a esquerda e direita. A cada vez que a bolinha acerta a barra ganha-se 50 pontos e ao completar 200 pontos o jogador passa de fase.
 
-*Fase 2:* O objetivo é acertar a bolinha nos obstáculos para destruí-los, sem deixar a bolinha cair.
+*Fase 2:* O objetivo é o mesmo, porém há 3 obstáculos na tela. A cada vez que a bolinha acerta a barra ganha-se 25 pontos e para finalizar a fase deve-se completar 400 pontos.
 
 Em ambas as fases ao deixar a bolinha cair perde-se 1 vida de um total de 5. O jogador ganha quando finaliza a fase 2.
 
@@ -35,10 +35,9 @@ Para rodar o projeto é necessário adicionar a biblioteca do OPENGL.
 [JOGL_MacOs](https://github.com/milenaofarril/Pong/blob/main/JOGL/JOGL_MacOS.zip)
 
     2. Extraia a pasta JOGL para a pasta Documentos
-<b>
 
-    3. Na IDE abra as configurações de Biblioteca para adicionar uma nova 
-       e indique o caminho que você deixou a pasta JOGL
+
+    3. Na IDE abra as configurações de Biblioteca para adicionar uma nova e indique o caminho que você deixou a pasta JOGL
 
 
 ## Autores

@@ -17,7 +17,7 @@ public class Menu {
 
     public void points(GL2 gl) {
         bigText(gl,65, 90, "PONTUAÇÃO: ");
-        bigText(gl, 85, 90, Integer.toString(mov.getScore()));
+        bigText(gl, 90, 90, Integer.toString(mov.getScore()));
     }
 
 
